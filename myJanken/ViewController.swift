@@ -22,5 +22,36 @@ class ViewController: UIViewController {
 
 
     @IBOutlet weak var answerImageView: UIImageView!
+    
+    @IBOutlet weak var answerLabel: UILabel!
+    
+    var answerNumber = 0
+    
+    let answerNumberGu = 0
+    let answerNumberChoki = 1
+    let answerNumberPa = 2
+    
+    
+    @IBAction func shuffleAction(_ sender: Any) {
+        
+        var newAnswerNumber = 0
+        
+        repeat {
+            newAnswerNumber = Int(arc4random_uniform(3))
+        } while answerNumber == newAnswerNumber
+        
+        answerNumber = newAnswerNumber
+        
+        if answerNumber == answerNumberGu {
+            answerLabel.text = "ぐー"
+            answerImageView.image = UIImage(named: "gu")
+        } else if answerNumber == answerNumberChoki {
+            answerLabel.text = "ちょき"
+            answerImageView.image = UIImage(named: "choki")
+        } else if answerNumber == answerNumberPa {
+            answerLabel.text = "ぱー"
+            answerImageView.image = UIImage(named: "pa")
+        }
+    }
 }
 
